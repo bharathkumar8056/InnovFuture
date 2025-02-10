@@ -318,7 +318,7 @@ export default function Home() {
                   </p>
                   <p className="flex items-center text-gray-600">
                     <FaEnvelope className="mr-3 text-green-600" />
-                    info@innovfuturesolutions@gmail.com
+                    info@innovfuturesolutions.com
                   </p>
                   <p className="flex items-center text-gray-600">
                     <FaMapMarkerAlt className="mr-3 text-green-600" />
