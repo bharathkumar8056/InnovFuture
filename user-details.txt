@@ -1,0 +1,42 @@
+# User-replaceable details for AgroOils website
+
+## Company Information
+Company Name: AgroOils
+Tagline: Nurturing health, naturally.
+
+## Contact Information
+Phone: +1 (123) 456-7890
+Email: m_karthik86@yahoo.com
+Address: 123 Nature Lane, Green City, EC 12345
+
+## Social Media Links
+Instagram: https://www.instagram.com/agrooils
+WhatsApp: +1234567890
+Facebook: https://www.facebook.com/agrooils
+YouTube: https://www.youtube.com/agrooils
+
+## Products
+1. Coconut Oil
+   Description: Pure and natural coconut oil for cooking and skin care.
+   Image: /assets/coconut-oil.jpg
+
+2. Sesame Oil
+   Description: Rich, nutty sesame oil perfect for Asian cuisine.
+   Image: /assets/sesame-oil.jpg
+
+3. Ground Nut Oil
+   Description: High-quality groundnut oil for versatile cooking applications.
+   Image: /assets/groundnut-oil.jpg
+
+4. Sago
+   Description: Traditional sago (javu arusi) for delicious desserts and snacks.
+   Image: /assets/sago.jpg
+
+## Email.js Configuration
+Service ID: YOUR_SERVICE_ID
+Template ID: YOUR_TEMPLATE_ID
+User ID: YOUR_USER_ID
+Recipient Email: m_karthik86@yahoo.com
+
+Replace the above values with your actual Email.js configuration details.
+
