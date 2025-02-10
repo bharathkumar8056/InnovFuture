@@ -374,7 +374,7 @@ export default function Home() {
           </div>
         </div>
       </footer>
-      <FloatingWhatsApp phoneNumber="1234567890" message="Hello, I'm interested in InnovFutures Solutions products!" />
+      <FloatingWhatsApp phoneNumber="7010735275" message="Hello, I'm interested in InnovFutures Solutions products!" />
     </div>
   )
 }
