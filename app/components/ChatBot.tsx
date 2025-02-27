@@ -94,16 +94,16 @@ const ChatBot: React.FC = () => {
   }
 
   return (
-    <div className="fixed bottom-6 left-6 z-50">
+    <div className="fixed bottom-4 left-4 z-50">
       {isOpen && (
-        <div className="bg-white rounded-lg shadow-xl w-full sm:w-80 md:w-96 lg:w-[400px] mb-4 h-[500px] flex flex-col">
+        <div className="bg-white rounded-lg shadow-xl w-[90%] sm:w-80 md:w-96 lg:w-[400px] max-h-[80vh] flex flex-col overflow-hidden">
           {/* Chat header */}
           <div className="bg-green-600 text-white p-4">
             <h3 className="text-lg font-semibold">Innovfuture Solutions Chat</h3>
           </div>
 
           {/* Chat messages */}
-          <div className="flex-grow overflow-y-auto p-4 max-h-[400px]">
+          <div className="flex-grow overflow-y-auto p-4 max-h-[60vh]">
             {messages.map((message, index) => (
               <div key={index} className={`mb-4 ${message.isUser ? "text-right" : "text-left"}`}>
                 <span
