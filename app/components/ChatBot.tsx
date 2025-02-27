@@ -1,7 +1,6 @@
 "use client"
 
-import type React from "react"
-import { useState, useRef, useEffect } from "react"
+import React, { useState, useRef, useEffect } from "react"
 import { FaComments, FaPaperPlane } from "react-icons/fa"
 
 interface Message {
@@ -97,15 +96,19 @@ const ChatBot: React.FC = () => {
   return (
     <div className="fixed bottom-6 left-6 z-50">
       {isOpen && (
-        <div className="bg-white rounded-lg shadow-xl w-full sm:w-80 mb-4 overflow-hidden max-h-[80vh] flex flex-col">
+        <div className="bg-white rounded-lg shadow-xl w-full sm:w-80 mb-4 h-[500px] flex flex-col"> 
+          {/* Fixed chat height */}
           <div className="bg-green-600 text-white p-4">
             <h3 className="text-lg font-semibold">Innovfuture Solutions Chat</h3>
           </div>
-          <div className="flex-grow overflow-y-auto p-4">
+          <div className="flex-grow overflow-y-auto p-4 max-h-[400px]"> 
+            {/* Message container with max height */}
             {messages.map((message, index) => (
               <div key={index} className={`mb-4 ${message.isUser ? "text-right" : "text-left"}`}>
                 <span
-                  className={`inline-block p-2 rounded-lg ${message.isUser ? "bg-green-100 text-green-800" : "bg-green-600 text-white"}`}
+                  className={`inline-block max-w-[90%] break-words p-2 rounded-lg ${
+                    message.isUser ? "bg-green-100 text-green-800" : "bg-green-600 text-white"
+                  }`}
                 >
                   {message.text}
                 </span>
@@ -157,4 +160,3 @@ const ChatBot: React.FC = () => {
 }
 
 export default ChatBot
-
