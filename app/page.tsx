@@ -82,7 +82,7 @@ export default function Home() {
       <header className="bg-white shadow-md fixed top-0 left-0 right-0 z-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 flex justify-between items-center">
           <div className="flex items-center">
-            <Image src="/assets/Innovfuture logo.jpeg" alt="AgroOils Logo" width={50} height={50} className="mr-3" />
+            <Image src="/assets/Innovfuture logo.jpeg" alt="Innovfuture Solutions Logo" width={50} height={50} className="mr-3" />
             <span className="text-2xl font-bold text-green-800 font-playfair">Innovfuture Solutions</span>
           </div>
           <nav className="hidden md:block">
@@ -325,11 +325,11 @@ export default function Home() {
                   </p>
                   <p className="flex items-center text-gray-600">
                     <FaEnvelope className="mr-3 text-green-600" />
-                    info@innovfuturesolutions.com
+                    info@innovfuturesolutions@gmail.com
                   </p>
                   <p className="flex items-center text-gray-600">
                     <FaMapMarkerAlt className="mr-3 text-green-600" />
-                    1044, maruthupandiyar avenue , sunnambu kolathur, chennai, TamilNadu, India - 600129..
+                    1044, maruthupandiyar avenue , sunnambu kolathur, chennai, TamilNadu, India - 600129.
                   </p>
                 </div>
               </div>
@@ -375,13 +375,13 @@ export default function Home() {
             </div>
           </div>
           <div className="mt-8 pt-8 border-t border-green-700 text-center text-sm">
-            <p>&copy; 2025 Innovfuture Solutions , All rights reserved.
-Developed By <a href="https://instagram.com/bkb_incorporation/" className="text-decoration-underline">BKB Incorporation </a></p>
+          <p>&copy; 2025 Innovfuture Solutions , All rights reserved.
+          Developed By <a href="https://instagram.com/bkb_incorporation/" className="text-decoration-underline">BKB Incorporation </a></p>
           </div>
         </div>
       </footer>
-    </chatbot>
-      <FloatingWhatsApp phoneNumber="7010735275" message="Hello, I'm interested in InnovFuture Solutions products!" />
+      <ChatBot />
+      <FloatingWhatsApp phoneNumber="7010735275" message="Hello, I'm interested in Innovfuture Solutions products!" />
     </div>
   )
 }
