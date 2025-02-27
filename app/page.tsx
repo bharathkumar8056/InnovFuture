@@ -1,9 +1,12 @@
 "use client"
 
-import { useState } from "react"
+import type React from "react"
+
+import { useState, useEffect } from "react"
 import Image from "next/image"
 import { FaInstagram, FaWhatsapp, FaFacebookF, FaYoutube, FaPhone, FaEnvelope, FaMapMarkerAlt } from "react-icons/fa"
 import emailjs from "@emailjs/browser"
+import ChatBot from "./components/ChatBot"
 import FloatingWhatsApp from "./components/FloatingWhatsApp"
 
 const products = [
@@ -39,6 +42,10 @@ export default function Home() {
   const [isSubmitting, setIsSubmitting] = useState(false)
   const [submitMessage, setSubmitMessage] = useState("")
 
+  useEffect(() => {
+    emailjs.init("nfgaFVXE8bbPQ9PAG") // Replace with your actual EmailJS User ID
+  }, [])
+
   const toggleMobileMenu = () => {
     setMobileMenuOpen(!mobileMenuOpen)
   }
@@ -54,13 +61,12 @@ export default function Home() {
 
     try {
       await emailjs.send(
-        "YOUR_SERVICE_ID",
-        "YOUR_TEMPLATE_ID",
+        "service_33yrlel", // Your EmailJS Service ID
+        "template_qpworcj", // Your EmailJS Template ID
         {
           ...formData,
-          to_email: "m_karthik86@yahoo.com",
+          to_email: "info@innovfuturesolutions.com",
         },
-        "YOUR_USER_ID",
       )
       setSubmitMessage("Thank you for your message. We will get back to you soon!")
       setFormData({ name: "", email: "", message: "" })
@@ -77,7 +83,7 @@ export default function Home() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 flex justify-between items-center">
           <div className="flex items-center">
             <Image src="/assets/Innovfuture logo.jpeg" alt="AgroOils Logo" width={50} height={50} className="mr-3" />
-            <span className="text-2xl font-bold text-green-800 font-playfair">InnovFuture Solutions</span>
+            <span className="text-2xl font-bold text-green-800 font-playfair">Innovfuture Solutions</span>
           </div>
           <nav className="hidden md:block">
             <ul className="flex space-x-8">
@@ -228,9 +234,10 @@ export default function Home() {
             <h2 className="text-4xl font-bold text-center text-green-800 mb-12 font-playfair">Our Story</h2>
             <div className="bg-white rounded-lg shadow-xl p-8">
               <p className="text-lg text-gray-700 mb-6 leading-relaxed">
-                Founded with a passion for quality and sustainability, InnovFuture Solutions has been at the forefront of delivering
-                premium agro products to households across the nation. Our journey began with a simple idea: to bring
-                the purest, most nutritious oils and traditional products directly from the farm to your table.
+                Founded with a passion for quality and sustainability, Innovfuture Solutions has been at the forefront
+                of delivering premium agro products to households across the nation. Our journey began with a simple
+                idea: to bring the purest, most nutritious oils and traditional products directly from the farm to your
+                table.
               </p>
               <p className="text-lg text-gray-700 mb-6 leading-relaxed">
                 Over the years, we've expanded our product line to include a variety of essential oils and agro
@@ -322,7 +329,7 @@ export default function Home() {
                   </p>
                   <p className="flex items-center text-gray-600">
                     <FaMapMarkerAlt className="mr-3 text-green-600" />
-                    1044, maruthupandiyar avenue , sunnambu kolathur, chennai, TamilNadu, India - 600129.
+                    1044, maruthupandiyar avenue , sunnambu kolathur, chennai, TamilNadu, India - 600129..
                   </p>
                 </div>
               </div>
@@ -368,13 +375,12 @@ export default function Home() {
             </div>
           </div>
           <div className="mt-8 pt-8 border-t border-green-700 text-center text-sm">
-            <p>&copy; 2024 Innovfuture Solutions All rights reserved.
-              Developed By <a href="https://instagram.com/bkb_incorporation/" className="text-decoration-underline">BKB Incorporation </a>
-            </p>
+            <p>&copy; 2025 Innovfuture Solutions , All rights reserved.
+Developed By <a href="https://instagram.com/bkb_incorporation/" className="text-decoration-underline">BKB Incorporation </a></p>
           </div>
         </div>
       </footer>
-      <FloatingWhatsApp phoneNumber="7010735275" message="Hello, I'm interested in InnovFutures Solutions products!" />
+      <FloatingWhatsApp phoneNumber="1234567890" message="Hello, I'm interested in InnovFutures Solutions products!" />
     </div>
   )
 }
