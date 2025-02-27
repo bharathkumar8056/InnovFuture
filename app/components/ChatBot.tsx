@@ -96,17 +96,18 @@ const ChatBot: React.FC = () => {
   return (
     <div className="fixed bottom-6 left-6 z-50">
       {isOpen && (
-        <div className="bg-white rounded-lg shadow-xl w-full sm:w-80 mb-4 h-[500px] flex flex-col"> 
-          {/* Fixed chat height */}
+        <div className="bg-white rounded-lg shadow-xl w-full sm:w-80 md:w-96 lg:w-[400px] mb-4 h-[500px] flex flex-col">
+          {/* Chat header */}
           <div className="bg-green-600 text-white p-4">
             <h3 className="text-lg font-semibold">Innovfuture Solutions Chat</h3>
           </div>
-          <div className="flex-grow overflow-y-auto p-4 max-h-[400px]"> 
-            {/* Message container with max height */}
+
+          {/* Chat messages */}
+          <div className="flex-grow overflow-y-auto p-4 max-h-[400px]">
             {messages.map((message, index) => (
               <div key={index} className={`mb-4 ${message.isUser ? "text-right" : "text-left"}`}>
                 <span
-                  className={`inline-block max-w-[90%] break-words p-2 rounded-lg ${
+                  className={`inline-block max-w-[85%] break-words p-2 rounded-lg ${
                     message.isUser ? "bg-green-100 text-green-800" : "bg-green-600 text-white"
                   }`}
                 >
@@ -114,6 +115,8 @@ const ChatBot: React.FC = () => {
                 </span>
               </div>
             ))}
+
+            {/* Predefined questions */}
             {showPredefined && (
               <div className="mt-4">
                 {predefinedQuestions.map((question, index) => (
@@ -129,6 +132,8 @@ const ChatBot: React.FC = () => {
             )}
             <div ref={messagesEndRef} />
           </div>
+
+          {/* Chat input */}
           <div className="p-4 border-t">
             <div className="flex">
               <input
@@ -149,6 +154,8 @@ const ChatBot: React.FC = () => {
           </div>
         </div>
       )}
+
+      {/* Floating chat button */}
       <button
         onClick={handleToggle}
         className="bg-green-600 text-white p-4 rounded-full shadow-lg hover:bg-green-700 transition duration-300"
