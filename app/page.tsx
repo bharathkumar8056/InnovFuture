@@ -380,7 +380,8 @@ Developed By <a href="https://instagram.com/bkb_incorporation/" className="text-
           </div>
         </div>
       </footer>
-      <FloatingWhatsApp phoneNumber="7010735275" message="Hello, I'm interested in InnovFutures Solutions products!" />
+      <chatbot/>
+      <FloatingWhatsApp phoneNumber="7010735275" message="Hello, I'm interested in InnovFuture Solutions products!" />
     </div>
   )
 }
