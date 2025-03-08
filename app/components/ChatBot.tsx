@@ -16,18 +16,24 @@ const predefinedQuestions = [
 
 const ChatBot: React.FC = () => {
   const [isOpen, setIsOpen] = useState(false)
+  const [isMobile, setIsMobile] = useState(false)
   const [messages, setMessages] = useState<Message[]>([])
   const [input, setInput] = useState("")
   const [showPredefined, setShowPredefined] = useState(true)
   const [askingLocation, setAskingLocation] = useState({ status: false, step: 0 })
   const messagesEndRef = useRef<HTMLDivElement>(null)
 
-  const scrollToBottom = () => {
-    messagesEndRef.current?.scrollIntoView({ behavior: "smooth" })
-  }
+  useEffect(() => {
+    const handleResize = () => {
+      setIsMobile(window.innerWidth <= 768) // Set mobile view if screen width ≤ 768px
+    }
+    handleResize()
+    window.addEventListener("resize", handleResize)
+    return () => window.removeEventListener("resize", handleResize)
+  }, [])
 
   useEffect(() => {
-    scrollToBottom()
+    messagesEndRef.current?.scrollIntoView({ behavior: "smooth" })
   }, [messages])
 
   const handleToggle = () => {
@@ -62,20 +68,18 @@ const ChatBot: React.FC = () => {
         response = `Thank you. And which area within ${question}?`
         setAskingLocation({ status: true, step: 2 })
       } else if (askingLocation.step === 2) {
-        response = `Thank you for providing your location details. For specific delivery information to ${question}, please contact us at info@innovfuturesolutions@gmail.com or call us at +91-7010735275.`
+        response = `Thank you for providing your location details. For specific delivery information to ${question}, please contact us at info@innovfuturesolutions.com or call us at +91-7010735275.`
         setAskingLocation({ status: false, step: 0 })
         setShowPredefined(true)
       }
     } else {
       switch (question.toLowerCase()) {
         case "what's special about innovfuture solutions?":
-          response =
-            "Innovfuture Solutions specializes in high-quality, sustainably sourced agro products."
+          response = "Innovfuture Solutions specializes in high-quality, sustainably sourced agro products."
           setShowPredefined(true)
           break
         case "how are the products made?":
-          response =
-            "Our products are made using a combination of traditional and modern methods."
+          response = "Our products are made using a combination of traditional and modern methods."
           setShowPredefined(true)
           break
         case "delivery information":
@@ -93,9 +97,15 @@ const ChatBot: React.FC = () => {
   }
 
   return (
-    <div className="fixed bottom-6 left-6 z-50">
+    <div className="fixed bottom-6 right-6 z-50">
       {isOpen && (
-        <div className="bg-white rounded-lg shadow-xl w-full sm:w-80 md:w-96 lg:w-[400px] mb-4 h-[500px] flex flex-col">
+        <div
+          className={`fixed bg-white shadow-lg border flex flex-col overflow-hidden transition-all ${
+            isMobile
+              ? "w-screen h-screen top-0 left-0"
+              : "w-[400px] h-[500px] bottom-16 right-4 rounded-lg"
+          }`}
+        >
           {/* Chat header with close button */}
           <div className="bg-green-600 text-white p-4 flex justify-between items-center">
             <h3 className="text-lg font-semibold">Innovfuture Solutions Chat</h3>
@@ -105,7 +115,7 @@ const ChatBot: React.FC = () => {
           </div>
 
           {/* Chat messages */}
-          <div className="flex-grow overflow-y-auto p-4 max-h-[400px]">
+          <div className="flex-grow overflow-y-auto p-4">
             {messages.map((message, index) => (
               <div key={index} className={`mb-4 ${message.isUser ? "text-right" : "text-left"}`}>
                 <span
