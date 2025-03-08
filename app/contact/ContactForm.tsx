@@ -23,10 +23,10 @@ export default function ContactForm() {
 
     try {
       await emailjs.send(
-        'YOUR_SERVICE_ID',
-        'YOUR_TEMPLATE_ID',
+        "service_33yrlel", // Your EmailJS Service ID
+        "template_qpworcj", // Your EmailJS Template ID
         formData,
-        'YOUR_USER_ID'
+        "info@innovfuturesolutions.com",
       )
       setSubmitMessage('Thank you for your message. We will get back to you soon!')
       setFormData({ name: '', email: '', message: '' })
@@ -38,7 +38,7 @@ export default function ContactForm() {
   }
 
   return (
-    <form onSubmit={handleSubmit} className="grid grid-cols-1 gap-y-6">
+    <form onSubmit={handleSubmit} className="grid grid-cols-1 gap-y-6 pb-32">
       <div>
         <label htmlFor="name" className="block text-sm font-medium text-gray-700">
           Name
@@ -52,7 +52,8 @@ export default function ContactForm() {
             required
             value={formData.name}
             onChange={handleChange}
-            className="py-3 px-4 block w-full shadow-sm focus:ring-indigo-500 focus:border-indigo-500 border-gray-300 rounded-md"
+            className="py-3 px-4 block w-full shadow-sm focus:ring-green-500 focus:border-green-500 border-gray-300 rounded-md text-black placeholder-gray-500 bg-white"
+            style={{ color: 'black', backgroundColor: 'white' }}
           />
         </div>
       </div>
@@ -69,7 +70,8 @@ export default function ContactForm() {
             required
             value={formData.email}
             onChange={handleChange}
-            className="py-3 px-4 block w-full shadow-sm focus:ring-indigo-500 focus:border-indigo-500 border-gray-300 rounded-md"
+            className="py-3 px-4 block w-full shadow-sm focus:ring-green-500 focus:border-green-500 border-gray-300 rounded-md text-black placeholder-gray-500 bg-white"
+            style={{ color: 'black', backgroundColor: 'white' }}
           />
         </div>
       </div>
@@ -85,7 +87,8 @@ export default function ContactForm() {
             required
             value={formData.message}
             onChange={handleChange}
-            className="py-3 px-4 block w-full shadow-sm focus:ring-indigo-500 focus:border-indigo-500 border-gray-300 rounded-md"
+            className="py-3 px-4 block w-full shadow-sm focus:ring-green-500 focus:border-green-500 border-gray-300 rounded-md text-black placeholder-gray-500 bg-white"
+            style={{ color: 'black', backgroundColor: 'white' }}
           />
         </div>
       </div>
@@ -93,7 +96,7 @@ export default function ContactForm() {
         <button
           type="submit"
           disabled={isSubmitting}
-          className="w-full inline-flex justify-center py-3 px-6 border border-transparent shadow-sm text-base font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+          className="w-full inline-flex justify-center py-3 px-6 border border-transparent shadow-sm text-base font-medium rounded-md text-white bg-green-600 hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-green-500"
         >
           {isSubmitting ? 'Sending...' : 'Send'}
         </button>
@@ -106,4 +109,3 @@ export default function ContactForm() {
     </form>
   )
 }
-
