@@ -325,7 +325,7 @@ export default function Home() {
                   </p>
                   <p className="flex items-center text-gray-600">
                     <FaEnvelope className="mr-3 text-green-600" />
-                    info@innovfuturesolutions@gmail.com
+                    info@innovfuturesolutions.com
                   </p>
                   <p className="flex items-center text-gray-600">
                     <FaMapMarkerAlt className="mr-3 text-green-600" />
@@ -346,18 +346,18 @@ export default function Home() {
               <p className="text-sm">Nurturing health, naturally.</p>
             </div>
             <div className="flex space-x-6 mb-4 md:mb-0">
-              <a href="#" className="hover:text-green-400 transition duration-300">
+{/*               <a href="#" className="hover:text-green-400 transition duration-300">
                 <FaInstagram size={24} />
-              </a>
-              <a href="#" className="hover:text-green-400 transition duration-300">
+              </a> */}
+              <a href="https://api.whatsapp.com/send/?phone=7010735275&text=Hello%2C+I%27m+interested+in+Innovfuture+Solutions+products%21&type=phone_number&app_absent=0" className="hover:text-green-400 transition duration-300" className="hover:text-green-400 transition duration-300">
                 <FaWhatsapp size={24} />
               </a>
-              <a href="#" className="hover:text-green-400 transition duration-300">
+{/*               <a href="#" className="hover:text-green-400 transition duration-300">
                 <FaFacebookF size={24} />
               </a>
               <a href="#" className="hover:text-green-400 transition duration-300">
                 <FaYoutube size={24} />
-              </a>
+              </a> */}
             </div>
             <div>
               <ul className="flex flex-col md:flex-row space-y-2 md:space-y-0 md:space-x-6 text-sm">
