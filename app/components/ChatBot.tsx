@@ -22,7 +22,6 @@ const ChatBot: React.FC = () => {
   const [askingLocation, setAskingLocation] = useState({ status: false, step: 0 })
   const messagesEndRef = useRef<HTMLDivElement>(null)
 
-  // Scroll to the latest message
   const scrollToBottom = () => {
     messagesEndRef.current?.scrollIntoView({ behavior: "smooth" })
   }
@@ -34,7 +33,9 @@ const ChatBot: React.FC = () => {
   const handleToggle = () => {
     setIsOpen(!isOpen)
     if (!isOpen) {
-      setMessages([{ text: "Hello! How can I help you today? Please select one of the following questions:", isUser: false }])
+      setMessages([
+        { text: "Hello! How can I help you today? Please select one of the following questions:", isUser: false },
+      ])
       setShowPredefined(true)
       setAskingLocation({ status: false, step: 0 })
     }
@@ -56,7 +57,6 @@ const ChatBot: React.FC = () => {
 
   const handleResponse = (question: string) => {
     let response = ""
-    
     if (askingLocation.status) {
       if (askingLocation.step === 1) {
         response = `Thank you. And which area within ${question}?`
@@ -69,11 +69,13 @@ const ChatBot: React.FC = () => {
     } else {
       switch (question.toLowerCase()) {
         case "what's special about innovfuture solutions?":
-          response = "Innovfuture Solutions specializes in high-quality, sustainably sourced agro products."
+          response =
+            "Innovfuture Solutions specializes in high-quality, sustainably sourced agro products."
           setShowPredefined(true)
           break
         case "how are the products made?":
-          response = "Our products are made using a combination of traditional and modern methods."
+          response =
+            "Our products are made using a combination of traditional and modern methods."
           setShowPredefined(true)
           break
         case "delivery information":
@@ -85,7 +87,6 @@ const ChatBot: React.FC = () => {
           setShowPredefined(true)
       }
     }
-
     setTimeout(() => {
       setMessages((prev) => [...prev, { text: response, isUser: false }])
     }, 500)
@@ -95,7 +96,7 @@ const ChatBot: React.FC = () => {
     <div className="fixed bottom-6 left-6 z-50">
       {isOpen && (
         <div className="bg-white rounded-lg shadow-xl w-full sm:w-80 md:w-96 lg:w-[400px] mb-4 h-[500px] flex flex-col">
-          {/* Chat Header */}
+          {/* Chat header with close button */}
           <div className="bg-green-600 text-white p-4 flex justify-between items-center">
             <h3 className="text-lg font-semibold">Innovfuture Solutions Chat</h3>
             <button onClick={handleToggle} className="text-white hover:text-gray-300">
@@ -103,11 +104,12 @@ const ChatBot: React.FC = () => {
             </button>
           </div>
 
-          {/* Chat Messages */}
+          {/* Chat messages */}
           <div className="flex-grow overflow-y-auto p-4 max-h-[400px]">
             {messages.map((message, index) => (
               <div key={index} className={`mb-4 ${message.isUser ? "text-right" : "text-left"}`}>
-                <span className={`inline-block max-w-[85%] break-words p-2 rounded-lg ${
+                <span
+                  className={`inline-block max-w-[85%] break-words p-2 rounded-lg ${
                     message.isUser ? "bg-green-100 text-green-800" : "bg-green-600 text-white"
                   }`}
                 >
@@ -116,7 +118,7 @@ const ChatBot: React.FC = () => {
               </div>
             ))}
 
-            {/* Predefined Questions */}
+            {/* Predefined questions */}
             {showPredefined && (
               <div className="mt-4">
                 {predefinedQuestions.map((question, index) => (
@@ -133,7 +135,7 @@ const ChatBot: React.FC = () => {
             <div ref={messagesEndRef} />
           </div>
 
-          {/* Chat Input */}
+          {/* Chat input */}
           <div className="p-4 border-t">
             <div className="flex">
               <input
@@ -142,7 +144,7 @@ const ChatBot: React.FC = () => {
                 onChange={(e) => setInput(e.target.value)}
                 placeholder="Type your message..."
                 className="flex-grow px-3 py-2 border rounded-l-md focus:outline-none focus:ring-2 focus:ring-green-500 text-black"
-                onKeyDown={(e) => e.key === "Enter" && handleSend()}
+                onKeyPress={(e) => e.key === "Enter" && handleSend()}
               />
               <button
                 onClick={handleSend}
@@ -155,7 +157,7 @@ const ChatBot: React.FC = () => {
         </div>
       )}
 
-      {/* Floating Chat Button */}
+      {/* Floating chat button */}
       <button
         onClick={handleToggle}
         className="bg-green-600 text-white p-4 rounded-full shadow-lg hover:bg-green-700 transition duration-300"
