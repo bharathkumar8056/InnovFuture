@@ -1,20 +1,26 @@
-'use client'
+"use client"
 
-import React, { useState } from 'react'
-import emailjs from 'emailjs-com'
+import type React from "react"
+import { useState, useEffect } from "react"
+import emailjs from "emailjs-com"
 
 export default function ContactForm() {
   const [formData, setFormData] = useState({
-    name: '',
-    email: '',
-    message: '',
+    name: "",
+    email: "",
+    phone: "",
+    message: "",
   })
   const [isSubmitting, setIsSubmitting] = useState(false)
-  const [submitMessage, setSubmitMessage] = useState('')
+  const [submitMessage, setSubmitMessage] = useState("")
+
+  useEffect(() => {
+    emailjs.init("nfgaFVXE8bbPQ9PAG")
+  }, [])
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const { name, value } = e.target
-    setFormData(prevState => ({ ...prevState, [name]: value }))
+    setFormData((prevState) => ({ ...prevState, [name]: value }))
   }
 
   const handleSubmit = async (e: React.FormEvent) => {
@@ -22,23 +28,18 @@ export default function ContactForm() {
     setIsSubmitting(true)
 
     try {
-      await emailjs.send(
-        "service_33yrlel", // Your EmailJS Service ID
-        "template_qpworcj", // Your EmailJS Template ID
-        formData,
-        "info@innovfuturesolutions.com",
-      )
-      setSubmitMessage('Thank you for your message. We will get back to you soon!')
-      setFormData({ name: '', email: '', message: '' })
+      await emailjs.send("service_33yrlel", "template_qpworcj", formData)
+      setSubmitMessage("Thank you for your message. We will get back to you soon!")
+      setFormData({ name: "", email: "", phone: "", message: "" })
     } catch (error) {
-      setSubmitMessage('Oops! There was an error sending your message. Please try again.')
+      setSubmitMessage("Oops! There was an error sending your message. Please try again.")
     }
 
     setIsSubmitting(false)
   }
 
   return (
-    <form onSubmit={handleSubmit} className="grid grid-cols-1 gap-y-6 pb-32">
+    <form onSubmit={handleSubmit} className="grid grid-cols-1 gap-y-6">
       <div>
         <label htmlFor="name" className="block text-sm font-medium text-gray-700">
           Name
@@ -52,8 +53,7 @@ export default function ContactForm() {
             required
             value={formData.name}
             onChange={handleChange}
-            className="py-3 px-4 block w-full shadow-sm focus:ring-green-500 focus:border-green-500 border-gray-300 rounded-md text-black placeholder-gray-500 bg-white"
-            style={{ color: 'black', backgroundColor: 'white' }}
+            className="py-3 px-4 block w-full shadow-sm focus:ring-indigo-500 focus:border-indigo-500 border-gray-300 rounded-md text-black"
           />
         </div>
       </div>
@@ -70,8 +70,25 @@ export default function ContactForm() {
             required
             value={formData.email}
             onChange={handleChange}
-            className="py-3 px-4 block w-full shadow-sm focus:ring-green-500 focus:border-green-500 border-gray-300 rounded-md text-black placeholder-gray-500 bg-white"
-            style={{ color: 'black', backgroundColor: 'white' }}
+            className="py-3 px-4 block w-full shadow-sm focus:ring-indigo-500 focus:border-indigo-500 border-gray-300 rounded-md text-black"
+          />
+        </div>
+      </div>
+      <div>
+        <label htmlFor="phone" className="block text-sm font-medium text-gray-700">
+          Phone Number
+        </label>
+        <div className="mt-1">
+          <input
+            id="phone"
+            name="phone"
+            type="tel"
+            autoComplete="tel"
+            required
+            placeholder="+91 XXXXXXXXXX"
+            value={formData.phone}
+            onChange={handleChange}
+            className="py-3 px-4 block w-full shadow-sm focus:ring-indigo-500 focus:border-indigo-500 border-gray-300 rounded-md text-black"
           />
         </div>
       </div>
@@ -87,8 +104,7 @@ export default function ContactForm() {
             required
             value={formData.message}
             onChange={handleChange}
-            className="py-3 px-4 block w-full shadow-sm focus:ring-green-500 focus:border-green-500 border-gray-300 rounded-md text-black placeholder-gray-500 bg-white"
-            style={{ color: 'black', backgroundColor: 'white' }}
+            className="py-3 px-4 block w-full shadow-sm focus:ring-indigo-500 focus:border-indigo-500 border-gray-300 rounded-md text-black"
           />
         </div>
       </div>
@@ -96,16 +112,13 @@ export default function ContactForm() {
         <button
           type="submit"
           disabled={isSubmitting}
-          className="w-full inline-flex justify-center py-3 px-6 border border-transparent shadow-sm text-base font-medium rounded-md text-white bg-green-600 hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-green-500"
+          className="w-full inline-flex justify-center py-3 px-6 border border-transparent shadow-sm text-base font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
         >
-          {isSubmitting ? 'Sending...' : 'Send'}
+          {isSubmitting ? "Sending..." : "Send"}
         </button>
       </div>
-      {submitMessage && (
-        <div className="mt-6 text-center text-sm text-gray-500">
-          {submitMessage}
-        </div>
-      )}
+      {submitMessage && <div className="mt-6 text-center text-sm text-gray-500">{submitMessage}</div>}
     </form>
   )
 }
+
