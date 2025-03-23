@@ -37,6 +37,7 @@ export default function Home() {
   const [formData, setFormData] = useState({
     name: "",
     email: "",
+    phone: "",
     message: "",
   })
   const [isSubmitting, setIsSubmitting] = useState(false)
@@ -65,11 +66,11 @@ export default function Home() {
         "template_qpworcj", // Your EmailJS Template ID
         {
           ...formData,
-          to_email: "info@innovfuturesolutions.com",
+          to_email: "info@innovfuturesolutions.com",  // Your email address
         },
       )
       setSubmitMessage("Thank you for your message. We will get back to you soon!")
-      setFormData({ name: "", email: "", message: "" })
+      setFormData({ name: "", email: "", phone: "", message: "" })
     } catch (error) {
       setSubmitMessage("Oops! There was an error sending your message. Please try again.")
     }
@@ -82,7 +83,7 @@ export default function Home() {
       <header className="bg-white shadow-md fixed top-0 left-0 right-0 z-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 flex justify-between items-center">
           <div className="flex items-center">
-            <Image src="/assets/Innovfuture logo.jpeg" alt="Innovfuture Solutions Logo" width={50} height={50} className="mr-3" />
+            <Image src="/assets/Innovfuture logo.jpeg" alt="AgroOils Logo" width={50} height={50} className="mr-3" />
             <span className="text-2xl font-bold text-green-800 font-playfair">Innovfuture Solutions</span>
           </div>
           <nav className="hidden md:block">
@@ -272,7 +273,7 @@ export default function Home() {
                       name="name"
                       value={formData.name}
                       onChange={handleChange}
-                      className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-green-500"
+                      className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-green-500 text-black"
                       required
                     />
                   </div>
@@ -286,7 +287,22 @@ export default function Home() {
                       name="email"
                       value={formData.email}
                       onChange={handleChange}
-                      className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-green-500"
+                      className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-green-500 text-black"
+                      required
+                    />
+                  </div>
+                  <div>
+                    <label htmlFor="phone" className="block text-sm font-medium text-gray-700 mb-1">
+                      Phone Number
+                    </label>
+                    <input
+                      type="tel"
+                      id="phone"
+                      name="phone"
+                      value={formData.phone}
+                      onChange={handleChange}
+                      placeholder="+91 XXXXXXXXXX"
+                      className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-green-500 text-black"
                       required
                     />
                   </div>
@@ -300,7 +316,7 @@ export default function Home() {
                       rows={4}
                       value={formData.message}
                       onChange={handleChange}
-                      className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-green-500"
+                      className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-green-500 text-black"
                       required
                     ></textarea>
                   </div>
@@ -346,13 +362,13 @@ export default function Home() {
               <p className="text-sm">Nurturing health, naturally.</p>
             </div>
             <div className="flex space-x-6 mb-4 md:mb-0">
-{/*               <a href="#" className="hover:text-green-400 transition duration-300">
+              {/* <a href="#" className="hover:text-green-400 transition duration-300">
                 <FaInstagram size={24} />
               </a> */}
-              <a href="https://api.whatsapp.com/send/?phone=7010735275&text=Hello%2C+I%27m+interested+in+Innovfuture+Solutions+products%21&type=phone_number&app_absent=0" className="hover:text-green-400 transition duration-300" className="hover:text-green-400 transition duration-300">
+              <a href="https://api.whatsapp.com/send/?phone=7010735275&text=Hello%2C+I%27m+interested+in+Innovfuture+Solutions+products%21&type=phone_number&app_absent=0" className="hover:text-green-400 transition duration-300">
                 <FaWhatsapp size={24} />
               </a>
-{/*               <a href="#" className="hover:text-green-400 transition duration-300">
+              {/* <a href="#" className="hover:text-green-400 transition duration-300">
                 <FaFacebookF size={24} />
               </a>
               <a href="#" className="hover:text-green-400 transition duration-300">
@@ -375,8 +391,10 @@ export default function Home() {
             </div>
           </div>
           <div className="mt-8 pt-8 border-t border-green-700 text-center text-sm">
-          <p>&copy; 2025 Innovfuture Solutions , All rights reserved.
-          Developed By <a href="https://instagram.com/bkb_incorporation/" className="text-decoration-underline">BKB Incorporation </a></p>
+            <p>&copy; 2025 Innovfuture Solutions. All rights reserved.
+            Developed By 
+            <a href="https://www.instagram.com/bkb_incorporation/" className="mt-8 pt-8 border-t border-green-700 text-center text-sm hover:underline" target="_blank" rel="noopener noreferrer"> BKB Incorporation</a>
+            </p>
           </div>
         </div>
       </footer>
